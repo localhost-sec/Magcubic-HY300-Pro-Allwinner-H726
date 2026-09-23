@@ -1,34 +1,55 @@
-# HY300 Pro H726 Recovery Checklist
+# Recovery Checklist
+
+> Goal: one reproducible, verified recovery procedure — not a collection of guesses.
 
 ## Before flashing
 
-- [ ] Confirm exact H726 hardware variant
+- [ ] Confirm **HY300 Pro + H726** hardware
 - [ ] Photograph projector label
-- [ ] Photograph motherboard markings
-- [ ] Record board revision
-- [ ] Record SoC and storage markings
+- [ ] Photograph motherboard
+- [ ] Record PCB revision
+- [ ] Record SoC marking
+- [ ] Record storage IC
+- [ ] Record RAM markings
+- [ ] Record firmware/build if the device boots
 - [ ] Obtain firmware directly from manufacturer/vendor
 - [ ] Calculate SHA-256
-- [ ] Preserve original image unchanged
+- [ ] Preserve an untouched master copy
 - [ ] Confirm vendor filename
-- [ ] Confirm filesystem requirement
-- [ ] Confirm button/power sequence
+- [ ] Confirm vendor filesystem requirement
+- [ ] Confirm vendor button/power sequence
 
-## USB
+## USB preparation
 
-- [ ] Identify removable disk
-- [ ] Confirm it is not the system disk
-- [ ] Format FAT32 only when required
-- [ ] Copy only vendor files
-- [ ] Safely eject USB
+- [ ] Identify the removable disk
+- [ ] Confirm it is not the Windows system disk
+- [ ] Format FAT32 only if required
+- [ ] Copy only the required vendor files
+- [ ] Preserve the original filename
+- [ ] Safely eject the USB
 
-## Flash
+## Recovery attempt
 
-- [ ] Follow documented trigger sequence
-- [ ] Watch LED/display changes
+- [ ] Follow the documented vendor trigger sequence
+- [ ] Watch LED/display behavior
+- [ ] Record USB behavior
 - [ ] Do not interrupt a confirmed write
-- [ ] Record result
+- [ ] Record the exact result
 
-## Failure
+## Failure path
 
-Stop blind image/filename combinations. Collect LED behavior, USB enumeration logs, UART output if available, motherboard photos, firmware SHA-256, vendor instructions, and error messages.
+Stop trying random firmware or filename combinations.
+
+Collect:
+
+- LED behavior
+- USB enumeration logs
+- UART/serial output if accessible
+- PCB markings
+- storage identification
+- firmware filename
+- SHA-256
+- vendor instructions
+- error messages
+
+Then choose the next diagnostic path based on evidence.
