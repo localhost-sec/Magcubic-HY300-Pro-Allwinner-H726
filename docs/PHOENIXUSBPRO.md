@@ -9,7 +9,6 @@ This method uses the Allwinner low-level FEL recovery path. H726 HY300 recovery 
 > [!WARNING]
 > This is a low-level firmware operation. It can erase the installed system and can brick the device if the wrong image is used or the connection is interrupted.
 >
-> **Use only the verified manufacturer update.img from this project's Releases. Do not use update-001.img as a substitute.**
 
 ## What you need
 
