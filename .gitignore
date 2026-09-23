@@ -1,0 +1,20 @@
+# Local firmware binaries
+*.img
+*.bin
+*.fex
+
+# Analysis / extraction output
+/extracted/
+/firmware-work/
+/dump/
+/logs/
+
+# OS/editor files
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Local hash/export files
+*.sha256
