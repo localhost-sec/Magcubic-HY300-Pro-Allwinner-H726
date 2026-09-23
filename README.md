@@ -121,3 +121,17 @@ Do not modify, repack, rename, or merge the image with files from another firmwa
 **Firmware: update.img • Status: 🟢 Working**
 
 </div>
+
+---
+
+## 🤖 About this README
+
+> **This repository and its documentation were generated with ChatGPT because I was too lazy to write it all myself. 😎**
+>
+> Please **always double-check the instructions, firmware files, hashes, and recovery procedure before flashing anything**. Hardware revisions and firmware packages can differ, and mistakes can brick the projector.
+
+<div align="center">
+
+*AI-assisted documentation • Human verification required*
+
+</div>
