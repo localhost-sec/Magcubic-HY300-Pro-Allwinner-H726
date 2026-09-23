@@ -56,6 +56,14 @@ The published hash must match the exact release asset.
 
 **SHA-256:** `7D3AD14E7E89EAF316348C214F24F304075465DB5C5FC00AE911086927ACE7FD`
 
+## ☁️ Firmware backup mirror
+
+An additional backup copy is maintained on Hugging Face:
+
+**[Allwinner H726 Recovery & Firmware](https://huggingface.co/datasets/localhostexe/Allwinner-H726-Recovery-and-Firmware/)**
+
+Use the Hugging Face copy as a secondary download source. Always verify the downloaded `update.img` against the published SHA-256 before flashing.
+
 ## 🔧 Recovery options
 
 ### A. Normal USB recovery
