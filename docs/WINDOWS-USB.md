@@ -1,21 +1,58 @@
-# Windows USB preparation
+# Windows USB Preparation
+
+## 1. Identify the USB drive
 
 Open PowerShell as Administrator:
 
-```powershell
-Get-Disk | Format-Table Number,FriendlyName,Size,PartitionStyle
-```
+    Get-Disk | Format-Table Number,FriendlyName,Size,PartitionStyle
 
-Verify the removable disk before formatting it. Use FAT32 only when the vendor recovery procedure specifies FAT32.
+Confirm the removable drive by **model and capacity**.
 
-Verify firmware:
+> Never format a disk until you have verified its number.
 
-```powershell
-$path = '.\Magcubic HY300 Pro Allwinner H726.img'
-Get-Item $path | Select-Object Name,Length,LastWriteTime
-Get-FileHash $path -Algorithm SHA256
-```
+## 2. Filesystem
 
-Keep an unchanged master copy of the manufacturer image.
+Use **FAT32 only when the manufacturer's recovery instructions require it**.
 
-Never run destructive disk commands until the correct disk number is confirmed.
+For a normal removable drive, Windows Disk Management is sufficient.
+
+## 3. Verify the firmware
+
+    $path = ".\Magcubic HY300 Pro Allwinner H726.img"
+    Get-Item $path | Select-Object Name,Length,LastWriteTime
+    Get-FileHash $path -Algorithm SHA256
+
+Record the resulting SHA-256 in docs/FIRMWARE-METADATA.md.
+
+## 4. Copy the vendor package
+
+Copy the manufacturer's files without modification.
+
+Do not:
+
+- Rename files unless instructed
+- Mix files from another model or revision
+- Edit or repack the image
+- Remove companion files supplied by the vendor
+
+## 5. Before powering the projector
+
+Verify:
+
+- Correct firmware
+- Correct filename
+- Correct USB filesystem
+- Correct USB port
+- Correct button/power sequence
+
+## 6. After the attempt
+
+Record:
+
+- LED behavior
+- Display behavior
+- USB behavior
+- Whether the projector boots
+- Firmware/build shown after recovery
+
+This makes the next recovery attempt reproducible.
