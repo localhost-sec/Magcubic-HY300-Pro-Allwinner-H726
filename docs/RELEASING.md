@@ -26,13 +26,9 @@ The GitHub **Releases** page is the canonical public download location.
     Firmware: update.img
     Source: Manufacturer
     Status: Tested working
-    SHA-256: <hash>
+    SHA-256: 7D3AD14E7E89EAF316348C214F24F304075465DB5C5FC00AE911086927ACE7FD
     File size: <bytes>
 
 ## Download
 
 Users should download `update.img` from the latest GitHub Release and verify the SHA-256 before copying it to recovery media.
-
-## Important
-
-The older `update-001.img` discussed during the investigation is not the verified release firmware. The release artifact is `update.img`.
