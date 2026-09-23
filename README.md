@@ -1,214 +1,168 @@
 <div align="center">
 
 # Magcubic HY300 Pro
-### Allwinner H726 Recovery & Firmware Documentation
+### Allwinner H726 Recovery & Firmware
 
-Hardware research • Firmware verification • Recovery notes
+**Working manufacturer firmware • Recovery documentation • Hardware research**
 
-<a href="https://github.com/localhost-sec/Magcubic-HY300-Pro-Allwinner-H726">Repository</a> ·
-<a href="https://github.com/Hen-Dricks/HY300-Ultimate">Community Reference</a>
+[![Firmware](https://img.shields.io/badge/Firmware-update.img-success)](../../releases)
+[![Platform](https://img.shields.io/badge/SoC-Allwinner%20H726-blue)](https://github.com/localhost-sec/Magcubic-HY300-Pro-Allwinner-H726)
+[![Status](https://img.shields.io/badge/Recovery-Verified-success)](https://github.com/localhost-sec/Magcubic-HY300-Pro-Allwinner-H726)
 
 </div>
 
 ---
 
-> [!WARNING]
-> **Firmware flashing can permanently brick the projector.**
-> Use firmware intended for the exact hardware revision. Never mix HY300 variants, rename files without vendor instructions, or interrupt a confirmed flash.
+> [!IMPORTANT]
+> **Confirmed working manufacturer firmware:** `update.img`
+>
+> The `update.img` package was supplied by the manufacturer and has been tested on the target **Magcubic HY300 Pro / Allwinner H726** projector.
+>
+> Download it from the repository's **Releases** page. Keep the release file unchanged.
 
-## Project status
+## 📡 Device
 
-| Item | Status |
+| Property | Value |
 |---|---|
-| Device | **Magcubic HY300 Pro** |
-| SoC / platform | **Allwinner H726** |
-| Recovery state | 🔴 Previously unresponsive after USB recovery attempt |
-| Manufacturer firmware | 🟡 Obtained, not independently verified |
-| Known-good image hash | ⬜ Not recorded |
-| Known-good flashing procedure | ⬜ Not established |
-| USB filesystem tested | **FAT32** |
-| Network observation | **TCP/10012 open** at one point |
+| Model | **Magcubic HY300 Pro** |
+| SoC | **Allwinner H726** |
+| Firmware | **update.img** |
+| Firmware source | **Manufacturer** |
+| Firmware status | 🟢 **Working / tested** |
+| USB media | FAT32 tested |
+| Previous network observation | TCP/10012 open at one point |
 
-This repository keeps **verified facts**, **observations**, and **experiments** clearly separated.
+## 💾 Firmware download
 
-## Hardware identity
+### Official project release
 
-### Known
+**Firmware filename:** `update.img`
 
-- Product: **Magcubic HY300 Pro**
-- Platform: **Allwinner H726**
-- Manufacturer image name seen: **Magcubic HY300 Pro Allwinner H726.img**
-- Other image examined: **update-001.img**
-- Reported update-001.img size: **2,262,962,688 bytes**
+**Download:** [Latest Release](../../releases/latest)
 
-### Still to document
+The release is the preferred distribution point for this project.
 
-- PCB / motherboard revision
-- Exact SoC marking
-- Storage IC
-- RAM markings
-- Factory firmware/build number
-- Power-adapter rating
-- USB port labels and behavior
+### Verify the download
 
-Before another blind recovery attempt, photograph the board and record all markings.
+After downloading the release asset, calculate its SHA-256.
 
-## Firmware
+**Windows PowerShell**
 
-### Manufacturer image
+    Get-FileHash ".\update.img" -Algorithm SHA256
 
-Preserve the manufacturer's original image **byte-for-byte**.
+**Linux**
 
-Record:
+    sha256sum update.img
 
-    Filename:
-    Firmware version:
-    Hardware revision:
-    File size:
-    SHA-256:
-    Source:
-    Date received:
-    Manufacturer instructions:
-    Redistribution permission:
+The resulting hash should be recorded in [Firmware Metadata](docs/FIRMWARE-METADATA.md).
 
-### Verify on Windows
+> [!WARNING]
+> Do not rename, edit, repack, truncate, or merge `update.img` with firmware files from another HY300/HY300 Pro board revision.
 
-    $path = ".\Magcubic HY300 Pro Allwinner H726.img"
-    Get-Item $path | Select-Object Name,Length,LastWriteTime
-    Get-FileHash $path -Algorithm SHA256
+## 🔧 Recovery / update procedure
 
-Do not publish or flash a modified copy as the manufacturer image.
+Use the **manufacturer's intended USB update method** for this image.
 
-## Image investigation
+### Prepare the USB drive
 
-The previously inspected update-001.img was reported to contain recognizable strings / structures including:
+1. Use a reliable USB flash drive.
+2. Back up anything on it.
+3. Format it as **FAT32** when required by the manufacturer procedure.
+4. Copy the manufacturer file **exactly as supplied**:
 
-- IMAGEWTY
-- sys_config.fex
+       update.img
 
-These findings are useful for analysis, but **do not prove compatibility** and do not identify the correct flashing mechanism.
+5. Safely eject the USB drive.
 
-> **Observed ≠ verified**
+### Start the projector recovery/update
 
-## Recovery history
+Follow the physical button / power sequence supplied by the manufacturer for your unit.
 
-1. Manufacturer firmware was obtained.
-2. USB flash media was prepared.
-3. FAT32 was tested for USB recovery.
-4. A USB firmware recovery attempt was made.
-5. The attempt did not restore normal operation.
-6. The projector was subsequently treated as bricked / unresponsive.
-7. A USB A-to-A cable was unavailable during part of the investigation.
-8. A phone / Termux recovery path was considered/tested but did not provide a working recovery.
-9. Network investigation was performed while the projector was reachable; TCP port 10012 was observed open at one point.
-10. The HY300-Ultimate project was used as a community reference.
+The exact trigger sequence is hardware/bootloader specific. **Do not substitute a guessed button combination.**
 
-## Recovery methods
+### During the update
 
-| Method | Purpose | Current state |
-|---|---|---|
-| Android / OTA | Normal update | Not verified |
-| Vendor USB updater | Factory/user recovery | Tested, unsuccessful |
-| Bootloader USB | Boot-time recovery | Not verified |
-| Allwinner FEL | Low-level recovery | Not verified |
-| UART / serial | Boot diagnostics | Not verified |
+If the projector clearly begins a firmware update:
 
-An IMG image alone does **not** tell us which mechanism the manufacturer intended.
+- keep stable power connected;
+- do not remove the USB drive;
+- do not rename or modify the image;
+- do not interrupt the process.
 
-Do not assume that copying an image to USB, renaming it, or using another HY300 image is sufficient.
+Wait until the manufacturer procedure indicates completion.
 
-## Recommended workflow
+## 🧪 What we learned during recovery
 
-### 1. Identify the exact board
+The investigation established several useful facts:
 
-Photograph and record:
+- The projector is the **Magcubic HY300 Pro** H726 variant.
+- The manufacturer supplied a working firmware image named **`update.img`**.
+- USB recovery/update was investigated using FAT32 media.
+- An earlier artifact named **`update-001.img`** was examined.
+- That earlier artifact was reported as **2,262,962,688 bytes** and contained recognizable strings including `IMAGEWTY` and `sys_config.fex`.
+- The earlier `update-001.img` should **not** be treated as the official working firmware.
+- A USB A-to-A cable was unavailable during part of the original investigation.
+- A phone/Termux recovery path did not provide the working recovery method.
+- TCP port **10012** was observed open while the projector was reachable on the network.
+- The [HY300-Ultimate](https://github.com/Hen-Dricks/HY300-Ultimate) project was used as a community reference.
 
-- projector label
-- motherboard
-- PCB revision
-- SoC marking
-- storage chip
-- RAM markings
-- USB ports
-- power section
+## 🧭 Recovery methods
 
-### 2. Verify the manufacturer image
+| Method | Status |
+|---|---|
+| Manufacturer `update.img` | 🟢 **Working / tested** |
+| USB / FAT32 update media | 🟢 **Used in recovery process** |
+| Android / OTA | ⚪ Not documented |
+| Bootloader USB recovery | ⚪ Hardware-specific |
+| Allwinner FEL | ⚪ Not required for the verified manufacturer update |
+| UART / serial | ⚪ Diagnostic only |
 
-Calculate SHA-256 and preserve an untouched master copy.
+## 📚 Documentation
 
-### 3. Follow the vendor package exactly
+- [Firmware metadata](docs/FIRMWARE-METADATA.md)
+- [Recovery checklist](docs/RECOVERY-CHECKLIST.md)
+- [Windows USB preparation](docs/WINDOWS-USB.md)
+- [Firmware & copyright notes](LICENSE-NOTES.md)
 
-Use the supplied filename, directory structure, filesystem requirements, and recovery trigger sequence.
+## 📦 Release contents
 
-### 4. Do not interrupt a confirmed flash
+The intended release should contain:
 
-Do not remove power or USB media while a genuine update is in progress.
+    update.img
 
-### 5. If USB recovery fails
+Recommended release notes:
 
-Stop repeating random image and filename combinations.
+- Target: **Magcubic HY300 Pro / Allwinner H726**
+- Source: **manufacturer**
+- Status: **tested working**
+- SHA-256: record the hash of the exact release asset
 
-Move to diagnostics:
+## 🔐 Integrity
 
-- USB enumeration
-- UART output
-- board identification
-- storage identification
-- Allwinner FEL detection
-- backup before further writes
+Always verify the checksum of the file you are about to place on the recovery USB.
 
-## Windows USB preparation
+Keep a second untouched copy of the manufacturer's original `update.img`.
 
-Identify the removable disk first:
+## ⚠️ Important distinctions
 
-    Get-Disk | Format-Table Number,FriendlyName,Size,PartitionStyle
+### Working firmware
 
-Verify the disk by **model and capacity** before formatting.
+`update.img` is the **manufacturer-provided image that has been tested and works on this target device**.
 
-Use FAT32 only when the vendor procedure requires FAT32.
+### Older investigation artifact
 
-Verify the firmware:
+`update-001.img` is an **earlier investigated image**. Its relationship to the working manufacturer package is not established. Do not use it as a substitute for `update.img`.
 
-    Get-FileHash ".\Magcubic HY300 Pro Allwinner H726.img" -Algorithm SHA256
+### Cross-flashing
 
-Keep an untouched master copy.
-
-## Repository layout
-
-    .
-    ├── README.md
-    ├── LICENSE-NOTES.md
-    └── docs
-        ├── FIRMWARE-METADATA.md
-        ├── RECOVERY-CHECKLIST.md
-        └── WINDOWS-USB.md
-
-## Research philosophy
-
-This project intentionally separates:
-
-- **Verified facts**
-- **Observed behavior**
-- **Unverified hypotheses**
-- **Experimental recovery methods**
-
-That prevents an experimental procedure from accidentally becoming a "known-good" flashing guide.
-
-## References
-
-- Community reference: https://github.com/Hen-Dricks/HY300-Ultimate
-- Project repository: https://github.com/localhost-sec/Magcubic-HY300-Pro-Allwinner-H726
-
-## Firmware redistribution
-
-Only publish manufacturer firmware when redistribution is permitted. Otherwise publish metadata, hashes, documentation, and the official/vendor source.
+Do not use firmware from visually similar HY300/HY300 Pro devices unless the hardware revision is confirmed identical.
 
 ---
 
 <div align="center">
 
-**Recovery status: 🔴 UNRESOLVED**
+**Magcubic HY300 Pro • Allwinner H726**
 
-Document first. Verify second. Flash last.
+**Firmware: `update.img` • Status: 🟢 Working**
 
 </div>
