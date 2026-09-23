@@ -81,18 +81,6 @@ This path is for a projector that cannot boot normally and uses a direct USB con
 
 > [!WARNING]
 
-## 🧪 Investigation history
-
-The investigation established:
-
-- The projector is the **Magcubic HY300 Pro** H726 variant.
-- The manufacturer supplied a working image named **update.img**.
-- USB recovery/update was investigated using FAT32 media.
-- A USB A-to-A cable was unavailable during part of the original investigation.
-- A phone/Termux recovery path did not provide the working recovery method.
-- TCP port **10012** was observed open while the projector was reachable.
-- The [HY300-Ultimate](https://github.com/Hen-Dricks/HY300-Ultimate) project was used as a community reference.
-
 ## 🧭 Recovery matrix
 
 | Situation | Method | Status |
