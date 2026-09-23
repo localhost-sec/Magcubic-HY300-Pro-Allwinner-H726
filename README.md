@@ -100,8 +100,8 @@ The investigation established:
 | Situation | Method | Status |
 |---|---|---|
 | Projector boots | Manufacturer update | 🟢 Working |
-| Projector does not boot | PhoenixUSBPro + FEL | 🟢 Documented recovery path |
-| USB-stick update fails | PhoenixUSBPro/FEL | 🟢 Recommended next path |
+| Projector does not boot | PhoenixUSBPro + FEL | 🟡 Documented recovery path; verify detection on your unit |
+| USB-stick update fails | PhoenixUSBPro/FEL | 🟡 Next recovery/diagnostic path |
 | Need low-level diagnostics | UART / USB enumeration | 🟡 Diagnostic |
 | Experimental board flashing | Other tools/images | 🔴 Avoid |
 
