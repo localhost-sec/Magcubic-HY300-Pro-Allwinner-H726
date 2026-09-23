@@ -1,0 +1,1 @@
+# Magcubic-HY300-Pro-Allwinner-H726
