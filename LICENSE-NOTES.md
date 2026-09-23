@@ -26,4 +26,3 @@ Before committing an image to this public repository, verify that redistribution
 4. Publish the metadata/hash.
 5. Link to the official/vendor source.
 
-> **Rule:** Do not label an image "official", "correct", or "known-good" until its provenance and hardware compatibility have been verified.
