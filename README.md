@@ -79,7 +79,6 @@ This path is for a projector that cannot boot normally and uses a direct USB con
 - recessed flash button above the HDMI port
 - manufacturer update.img
 
-> [!WARNING]
 
 ## 📚 Documentation
 
