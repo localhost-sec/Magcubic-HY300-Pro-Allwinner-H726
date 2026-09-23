@@ -32,3 +32,11 @@ The GitHub **Releases** page is the canonical public download location.
 ## Download
 
 Users should download `update.img` from the latest GitHub Release and verify the SHA-256 before copying it to recovery media.
+
+## Backup mirror
+
+A secondary copy is maintained on Hugging Face:
+
+https://huggingface.co/datasets/localhostexe/Allwinner-H726-Recovery-and-Firmware/
+
+The backup mirror is not a substitute for checksum verification. Users should verify the SHA-256 of `update.img` after downloading it from any mirror.
