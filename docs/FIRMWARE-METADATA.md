@@ -10,7 +10,7 @@
 | Source | **Manufacturer** |
 | Compatibility | **Verified on target projector** |
 | Working status | **Confirmed / tested** |
-| Firmware version | **TBD** |
+| Firmware version | `7D3AD14E7E89EAF316348C214F24F304075465DB5C5FC00AE911086927ACE7FD` |
 | Hardware revision | **TBD** |
 | File size | **TBD** |
 | SHA-256 | **TBD** |
@@ -29,18 +29,6 @@ Calculate the hash from the exact release asset.
     sha256sum update.img
 
 Do not invent or estimate a hash.
-
-## Previous investigation artifact
-
-| Field | Value |
-|---|---|
-| Filename | `update-001.img` |
-| Reported size | **2,262,962,688 bytes** |
-| Observed strings | `IMAGEWTY`, `sys_config.fex` |
-| SHA-256 | Not recorded |
-| Status | **Not the verified release firmware** |
-
-> **Important:** The working manufacturer firmware is **`update.img`**. The older `update-001.img` artifact should not be used as a substitute.
 
 ## Release requirements
 
