@@ -52,7 +52,9 @@ Verify the downloaded image:
 
     sha256sum update.img
 
-The published hash should match the exact release asset.
+The published hash must match the exact release asset.
+
+**SHA-256:** `7D3AD14E7E89EAF316348C214F24F304075465DB5C5FC00AE911086927ACE7FD`
 
 ## 🔧 Recovery options
 
@@ -78,7 +80,6 @@ This path is for a projector that cannot boot normally and uses a direct USB con
 - manufacturer update.img
 
 > [!WARNING]
-> Do not use update-001.img for this procedure. The verified manufacturer firmware is **update.img**.
 
 ## 🧪 Investigation history
 
@@ -87,9 +88,6 @@ The investigation established:
 - The projector is the **Magcubic HY300 Pro** H726 variant.
 - The manufacturer supplied a working image named **update.img**.
 - USB recovery/update was investigated using FAT32 media.
-- An earlier artifact named **update-001.img** was examined.
-- update-001.img was reported as **2,262,962,688 bytes** and contained strings including **IMAGEWTY** and **sys_config.fex**.
-- The older update-001.img is **not** the verified working firmware.
 - A USB A-to-A cable was unavailable during part of the original investigation.
 - A phone/Termux recovery path did not provide the working recovery method.
 - TCP port **10012** was observed open while the projector was reachable.
